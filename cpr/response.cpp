@@ -11,6 +11,12 @@ Response::Response(std::shared_ptr<CurlHolder> curl, std::string&& p_text,
     assert(curl_->handle);
     curl_easy_getinfo(curl_->handle, CURLINFO_RESPONSE_CODE, &status_code);
     curl_easy_getinfo(curl_->handle, CURLINFO_TOTAL_TIME, &elapsed);
+    curl_easy_getinfo(curl_->handle, CURLINFO_NAMELOOKUP_TIME, &nslookup_time);
+    curl_easy_getinfo(curl_->handle, CURLINFO_CONNECT_TIME, &connect_time);
+    curl_easy_getinfo(curl_->handle, CURLINFO_APPCONNECT_TIME, &appconnect_time);
+    curl_easy_getinfo(curl_->handle, CURLINFO_PRETRANSFER_TIME, &pretransfer_time);
+    curl_easy_getinfo(curl_->handle, CURLINFO_STARTTRANSFER_TIME, &starttransfer_time);
+    curl_easy_getinfo(curl_->handle, CURLINFO_REDIRECT_TIME, &redirect_time);
     char* url_string{nullptr};
     curl_easy_getinfo(curl_->handle, CURLINFO_EFFECTIVE_URL, &url_string);
     url = Url(url_string);
