@@ -29,6 +29,12 @@ class Response {
     Header header{};
     Url url{};
     double elapsed{};
+    double nslookup_time{};
+    double connect_time{};
+    double appconnect_time{};
+    double pretransfer_time{};
+    double starttransfer_time{};
+    double redirect_time{};
     Cookies cookies{};
     Error error{};
     std::string raw_header{};
